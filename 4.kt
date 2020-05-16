@@ -1,28 +1,17 @@
 fun main(args: Array<String>) {
-    duplicateString("hari apa saja saya bisa!")
+    val masukan : String = "hari apa saja saya bisa!"
+    duplicateString(masukan)
+    
 }
 
 fun duplicateString(kata:String) {
-  var map = HashMap<Char, Int>()
+
   var str = kata.replace(("\\s").toRegex(), "")
-  var chars = str.toCharArray()
-  for (ch in chars)
-  {
-    if (map.containsKey(ch))
-    {
-      map.put(ch, map.get(ch) + 1)
-    }
-    else
-    {
-      map.put(ch, 1)
-    }
-  }
-  var keys = map.keySet()
-  for (ch in keys)
-  {
-    if (map.get(ch) > 1)
-    {
-      println("Char " + ch + " " + map.get(ch))
-    }
+  var test = (str.groupingBy { it }.eachCount().filter { it.value > 1 })
+  var kosong = ("1".groupingBy { it }.eachCount().filter { it.value > 1 })
+  if(test.keys){
+        print("kosong")
+  }else{
+      print(test)
   }
 }
